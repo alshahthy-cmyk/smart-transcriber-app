@@ -1,0 +1,23 @@
+workflows:
+  flutter-apk:
+    name: Flutter APK Build
+    max_build_duration: 60
+
+    environment:
+      flutter: stable
+
+    scripts:
+      - name: Get dependencies
+        script: |
+          flutter pub get
+
+      - name: Generate launcher icons
+        script: |
+          dart run flutter_launcher_icons
+
+      - name: Build APK
+        script: |
+          flutter build apk --release --split-per-abi
+
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
