@@ -1,0 +1,66 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace "com.whisper.arabic"
+    compileSdk flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    defaultConfig {
+        applicationId "com.whisper.arabic"
+        minSdk 24
+        targetSdk flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    signingConfigs {
+        release {
+            // TODO: Add your custom keystore details here for A12 Release
+            // storeFile file("keystore.jks")
+            // storePassword "your_password"
+            // keyAlias "your_alias"
+            // keyPassword "your_password"
+        }
+    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            // ARM64 optimization and other necessary ABIs
+            include 'arm64-v8a', 'armeabi-v7a', 'x86_64'
+            universalApk true
+        }
+    }
+
+    buildTypes {
+        release {
+            // Change to signingConfigs.release when you generate the keystore
+            signingConfig signingConfigs.debug
+            
+            // Optimization & Obfuscation (A12)
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {}

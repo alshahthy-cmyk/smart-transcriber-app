@@ -1,0 +1,41 @@
+name: arabic_whisper_transcriber
+description: A professional Android app for Arabic audio transcription using AI.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  
+  # State Management & Architecture
+  flutter_riverpod: ^2.5.1
+  
+  # Theme & Typography
+  google_fonts: ^6.2.1
+
+  # File Handling & Processing
+  file_picker: ^8.0.3
+  ffmpeg_kit_flutter_audio: ^6.0.3
+  path_provider: ^2.1.2
+  dio: ^5.4.3
+  shared_preferences: ^2.2.2
+  flutter_background_service: ^3.4.6
+  flutter_local_notifications: ^17.0.0
+  share_plus: ^10.1.0
+  pdf: ^3.11.1
+  printing: ^5.13.1
+  connectivity_plus: ^6.0.3
+  flutter_secure_storage: ^9.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
